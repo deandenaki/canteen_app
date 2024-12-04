@@ -8,7 +8,7 @@ class AuthLocalResource{
     await prefs.setString('auth_data', authResponseModel.toJson());
   }
 
-  Future<void> remoteAuthData() async{
+  Future<void> removeAuthData() async{
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('auth_data');
   }

@@ -52,7 +52,7 @@ class User {
     id: json["id"],
     name: json["name"],
     email: json["email"],
-    phone: json["phone"],
+    phone: json["phone"] ?? "",
     role: json["role"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),

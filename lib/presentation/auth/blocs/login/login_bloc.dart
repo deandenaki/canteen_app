@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:canteen_app/data/dataresource/auth_local_datasource.dart';
 import 'package:canteen_app/data/model/response/auth_response_model.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../data/model/request/auth_remote_datasource.dart';
+import '../../../../data/dataresource/auth_remote_datasource.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

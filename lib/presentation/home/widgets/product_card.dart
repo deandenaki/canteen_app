@@ -1,12 +1,17 @@
 part of '../pages/home_page.dart';
 
 class ProductCard extends StatelessWidget {
+  final Product product;
+  final VoidCallback onPressed;
   const ProductCard({
     super.key,
+    required this.product,
+    required this.onPressed
   });
 
   @override
   Widget build(BuildContext context) {
+
     return Center(
       child: Container(
         decoration: BoxDecoration(
@@ -40,7 +45,7 @@ class ProductCard extends StatelessWidget {
                       height: 90,
                       width: 90,
                       fit: BoxFit.fitWidth,
-                      imageUrl: 'https://via.placeholder.com/150',
+                      imageUrl: '${Variables.imageBaseUrl}${product.image}',
                       placeholder: (context, url) =>
                       const Center(child: CircularProgressIndicator()),
                       errorWidget: (context, url, error) => const Icon(
@@ -53,7 +58,7 @@ class ProductCard extends StatelessWidget {
               ),
               const SpaceHeight(16.0),
               Text(
-                'Latte Coffee',
+                product.name,
                 style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
@@ -63,7 +68,7 @@ class ProductCard extends StatelessWidget {
               ),
               const SpaceHeight(5.0),
               Text(
-                'Drink',
+                product.category.name.toString(),
                 style: const TextStyle(
                   color: AppColors.grey,
                   fontSize: 14,
@@ -74,7 +79,7 @@ class ProductCard extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Text(
-                      'Rp 25,000',
+                      product.price.currencyFormatRp,
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
                       ),

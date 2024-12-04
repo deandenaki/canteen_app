@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:canteen_app/data/dataresource/auth_local_datasource.dart';
 import 'package:canteen_app/main.dart';
 import 'package:canteen_app/presentation/auth/blocs/login/login_bloc.dart';
 import 'package:canteen_app/presentation/general/dashboard_page.dart';
@@ -83,6 +84,7 @@ class _LoginPageState extends State<LoginPage> {
           BlocListener<LoginBloc, LoginState>(
             listener: (context, state) {
               if (state is LoginSuccess) {
+                AuthLocalResource().saveAuthData(state.authResponseModel);
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -110,6 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     context.read<LoginBloc>().add(LoginButtonPressed(email: usernameController.text, password: passwordController.text));
                   },
+                  color: Colors.cyan,
                   label: 'Login',
                 );
               },
